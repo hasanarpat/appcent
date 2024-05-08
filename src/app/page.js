@@ -1,9 +1,12 @@
-import Image from 'next/image';
+import Jumbotron from '@/components/jumbotron/Jumbotron';
+import List from '@/components/list/List';
 
 export default function Home() {
   return (
-    <main className='flex flex-col items-center justify-between p-24'>
-      Merhaba
+    <main className='p-8 lg:px-24'>
+      <Jumbotron />
+      <List />
+      <List />
     </main>
   );
 }

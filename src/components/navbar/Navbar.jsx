@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav className='bg-indigo-700 text-white h-20 p-4 px-12'>
+    <nav className='bg-cyan-700 text-white h-20 p-4 px-12'>
       <div className='flex items-center justify-between'>
         <div>
           <h1 className='text-3xl font-bold'>Movie DB</h1>
