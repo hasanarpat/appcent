@@ -4,7 +4,7 @@ const MovieDetails = ({ params }) => {
   const { slug } = params;
   console.log(slug);
 
-  return <div>MovieDetails</div>;
+  return <div className=''>MovieDetails</div>;
 };
 
 export default MovieDetails;

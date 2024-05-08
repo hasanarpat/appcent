@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <main className='p-8 lg:px-24'>
       <Jumbotron />
-      <List />
-      <List />
+      <List title='Popular' />
+      <List title='Trend' />
     </main>
   );
 }
