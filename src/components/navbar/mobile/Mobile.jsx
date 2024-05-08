@@ -18,7 +18,7 @@ const Mobile = () => {
       <div
         className={`${
           openMenu ? 'absolute' : 'hidden'
-        } z-10 w-screen h-screen bg-red-500 left-0 top-20`}
+        } z-10 w-screen h-[calc(100vh-88px)] bg-red-500 left-0 top-20`}
       >
         <div className='w-full h-full bg-indigo-400 flex items-center justify-center'>
           <ul className='flex flex-col items-center gap-8'>
