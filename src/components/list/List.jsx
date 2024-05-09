@@ -6,6 +6,7 @@ const List = ({ title }) => {
   const wrapperRef = useRef(null);
   const itemRef = useRef(null);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,6 +18,17 @@ const List = ({ title }) => {
 
     return () => clearInterval(interval);
   }, [slideIndex]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await fetch('/api/popular');
+      const data = await res.json();
+
+      setData(data);
+    };
+
+    getData();
+  }, []);
 
   const handleDirection = (direction) => {
     if (direction === 'left')
@@ -65,45 +77,11 @@ const List = ({ title }) => {
         className='flex flex-row transition-all duration-500 ease-out'
         ref={wrapperRef}
       >
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
-        <div ref={itemRef} className='flex'>
-          <Card />
-        </div>
+        {data.results?.map((item) => (
+          <div ref={itemRef} className='flex' key={item.id}>
+            <Card movie={item} />
+          </div>
+        ))}
       </div>
     </div>
   );

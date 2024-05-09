@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Card = () => {
+const Card = ({ movie }) => {
+  console.log(movie);
+
   return (
     <Link
       href={`/movie/123`}
@@ -16,10 +18,10 @@ const Card = () => {
         />
       </div>
       <div className='p-3 rounded-b-lg flex flex-col items-center gap-1 bg-white'>
-        <h4 className='font-bold'>Spectre 007</h4>
+        <h4 className='font-bold'>{movie.title}</h4>
         <div className='flex items-center justify-between w-full'>
-          <span className='text-sm font-normal'>2018</span>
-          <span className='text-sm font-normal'>7.7</span>
+          <span className='text-sm font-normal'>{movie.release_date}</span>
+          <span className='text-sm font-normal'>{movie.vote_average}</span>
         </div>
       </div>
     </Link>
