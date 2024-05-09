@@ -1,13 +1,13 @@
 'use client';
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Card from '../card/Card';
-import Loading from '@/app/loading';
 
 const List = ({ title }) => {
   const wrapperRef = useRef(null);
   const itemRef = useRef(null);
   const [slideIndex, setSlideIndex] = useState(0);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,10 +27,11 @@ const List = ({ title }) => {
       else if (title === 'Trend') res = await fetch('/api/topRated');
       const data = await res.json();
       setData(data);
+      setLoading(false);
     };
 
     getData();
-  }, []);
+  }, [title]);
 
   const handleDirection = (direction) => {
     if (direction === 'left')
@@ -75,16 +76,27 @@ const List = ({ title }) => {
           <path d='M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z'></path>
         </svg>
       </span>
-      <div
-        className='flex flex-row transition-all duration-500 ease-out'
-        ref={wrapperRef}
-      >
-        {data.results?.map((item) => (
-          <div ref={itemRef} className='flex' key={item.id}>
-            <Card movie={item} />
+      {loading ? ( // Check loading state
+        <div className='text-7xl w-full h-[420px]'>
+          <div className='w-full h-full flex gap-2 items-stretch p-8'>
+            <div className='animate-pulse w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-gray-400/50 rounded-lg'></div>
+            <div className='animate-pulse hidden md:block w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-gray-400/50 rounded-lg'></div>
+            <div className='animate-pulse hidden lg:block w-full lg:w-1/3 xl:w-1/4 bg-gray-400/50 rounded-lg'></div>
+            <div className='animate-pulse hidden xl:block w-full xl:w-1/4 bg-gray-400/50 rounded-lg'></div>
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div
+          className='flex flex-row transition-all duration-500 ease-out'
+          ref={wrapperRef}
+        >
+          {data.results?.map((item) => (
+            <div ref={itemRef} className='flex' key={item.id}>
+              <Card movie={item} />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
