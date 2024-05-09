@@ -12,9 +12,11 @@ const List = ({ title }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       const itemWidth = itemRef.current?.offsetWidth;
-      wrapperRef.current.style.transform = `translateX(${
-        -slideIndex * itemWidth
-      }px)`;
+      if (wrapperRef.current) {
+        wrapperRef.current.style.transform = `translateX(${
+          -slideIndex * itemWidth
+        }px)`;
+      }
     }, 500);
 
     return () => clearInterval(interval);

@@ -19,25 +19,25 @@ const MovieDetails = async ({ params }) => {
   const bgImg = await bgImgRes.json();
 
   return (
-    <div className=''>
+    <div className='bg-slate-950 min-h-[calc(100svh-176px)]'>
       <div className='w-full h-[720px] lg:h-[420px] relative'>
         <Image
           alt='movie'
           src={bgImg.path}
           fill
-          className='object-cover opacity-50'
+          className='object-cover opacity-80'
         />
         <div className='absolute z-10 w-full h-full'>
           <div className='w-full h-full p-4 px-8 flex flex-col lg:flex-row items-center lg:items-stretch lg:max-w-max lg:m-auto gap-4 lg:gap-24'>
-            <div className='relative w-64 lg:aspect-[9/16] h-full'>
+            <div className='relative w-64 lg:aspect-[9/15] h-full'>
               <Image
                 alt='movie'
                 src={img.path}
                 fill
-                className='object-cover rounded-md'
+                className='object-cover rounded shadow-md shadow-white'
               />
             </div>
-            <div className='flex flex-col gap-2 max-w-2xl justify-center'>
+            <div className='flex flex-col gap-2 max-w-2xl justify-center text-white'>
               <h2 className='text-2xl xl:text-4xl font-semibold'>
                 {data.title}
               </h2>
@@ -72,7 +72,7 @@ const MovieDetails = async ({ params }) => {
       </div>
       <div className='flex flex-col gap-2 lg:gap-6 p-4 px-8 max-w-max m-auto'>
         <div className='flex flex-col md:flex-row items-start gap-2'>
-          <span>Categories:</span>
+          <span className='text-white'>Categories:</span>
           <ul className='flex flex-wrap items-center gap-2'>
             {data.genres.map((genre) => (
               <li
@@ -85,7 +85,7 @@ const MovieDetails = async ({ params }) => {
           </ul>
         </div>
         <div className='flex flex-col md:flex-row items-start gap-2'>
-          <span>Producers:</span>
+          <span className='text-white'>Producers:</span>
           <ul className='flex flex-wrap items-center gap-2'>
             {data.production_companies.map((comp) => (
               <li
@@ -100,7 +100,7 @@ const MovieDetails = async ({ params }) => {
           </ul>
         </div>
       </div>
-      <div className='flex justify-center mb-6'>
+      <div className='flex justify-center pb-8'>
         <video
           controls
           autoPlay
