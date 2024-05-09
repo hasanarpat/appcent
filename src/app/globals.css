@@ -18,5 +18,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+@layer utilities {
+  .list {
+    /* ... */
+
+    /* Hide scrollbar in Firefox */
+    scrollbar-width: none;
+
+    /* Hide scrollbar in IE and Edge */
+    -ms-overflow-style: none;
+  }
+
+  /* Hide scrollbar in webkit */
+  .list::-webkit-scrollbar {
+    display: none;
+  }
 }

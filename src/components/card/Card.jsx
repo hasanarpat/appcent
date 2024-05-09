@@ -5,7 +5,7 @@ const Card = () => {
   return (
     <Link
       href={`/movie/123`}
-      className='min-w-64 border border-gray-500 rounded-lg shadow-lg shadow-cyan-200 lg:hover:scale-105 hover:z-10 transition-all duration-200 ease-linear basis-1/2 lg:basis-1/4 xl:basis-1/5'
+      className='min-w-64 mr-2 border border-gray-500 rounded-lg shadow-lg shadow-cyan-200 lg:hover:scale-105 hover:z-10 transition-all duration-200 ease-linear basis-1/2 lg:basis-1/4 xl:basis-1/5'
     >
       <div className='w-full aspect-[4/5] lg:aspect-[5/7] relative'>
         <Image

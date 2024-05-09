@@ -4,13 +4,16 @@ import Card from '../card/Card';
 
 const List = ({ title }) => {
   const wrapperRef = useRef(null);
+  const itemRef = useRef(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSlideIndex((prev) => prev);
-      wrapperRef.current.style.transform = `translateX(${-slideIndex * 50}%)`;
-    }, 1000);
+      const itemWidth = itemRef.current?.offsetWidth;
+      wrapperRef.current.style.transform = `translateX(${
+        -slideIndex * itemWidth
+      }px)`;
+    }, 500);
 
     return () => clearInterval(interval);
   }, [slideIndex]);
@@ -23,10 +26,10 @@ const List = ({ title }) => {
   };
 
   return (
-    <div className='p-2 relative overflow-hidden'>
+    <div className='p-2 relative overflow-y-hidden overflow-x-scroll snap-x snap-mandatory list'>
       <p className='mb-4 font-semibold'>{title} Movies</p>
       <span
-        className='absolute top-1/2 left-0 z-20 text-black/50 bg-white/60 p-2 rounded-full cursor-pointer hover:scale-125 transition-all duration-75 ease-in'
+        className='absolute top-1/2 left-0 z-20 text-black/50 bg-white/60 shadow-xl p-2 rounded-full cursor-pointer hover:scale-125 transition-all duration-75 ease-in'
         onClick={() => handleDirection('left')}
       >
         <svg
@@ -43,7 +46,7 @@ const List = ({ title }) => {
         </svg>
       </span>
       <span
-        className='absolute top-1/2 right-0 z-20 text-black/50 bg-white/60 p-2 rounded-full cursor-pointer hover:scale-125 transition-all duration-75 ease-in'
+        className='absolute top-1/2 right-0 z-20 text-black/50 bg-white/60 shadow-xl p-2 rounded-full cursor-pointer hover:scale-125 transition-all duration-75 ease-in'
         onClick={() => handleDirection('right')}
       >
         <svg
@@ -59,86 +62,48 @@ const List = ({ title }) => {
         </svg>
       </span>
       <div
-        className='flex flex-row gap-2 transition-all duration-500 ease-out'
+        className='flex flex-row transition-all duration-500 ease-out'
         ref={wrapperRef}
       >
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
+        <div ref={itemRef} className='flex'>
+          <Card />
+        </div>
       </div>
     </div>
   );
