@@ -33,9 +33,9 @@ const Card = ({ movie }) => {
       </div>
       <div className='p-3 rounded-b-lg flex flex-col items-center gap-1 bg-white'>
         <h4 className='font-bold text-center'>{movie.title}</h4>
-        <div className='flex items-center justify-between w-full'>
-          <span className='text-sm font-normal'>{movie.release_date}</span>
-          <span className='text-sm font-normal flex items-center gap-px'>
+        <div className='flex items-center justify-between w-full px-2'>
+          <span className='text-sm font-semibold'>{movie.release_date}</span>
+          <span className='text-sm font-semibold flex items-center gap-px'>
             <svg
               stroke='currentColor'
               fill='currentColor'

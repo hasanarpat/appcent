@@ -17,7 +17,6 @@ const MovieDetails = async ({ params }) => {
     `http://localhost:3000/api/getBackdrop/${data.backdrop_path}`
   );
   const bgImg = await bgImgRes.json();
-  console.log(data);
 
   return (
     <div className=''>

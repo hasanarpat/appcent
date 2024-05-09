@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import Card from '../card/Card';
+import Loading from '@/app/loading';
 
 const List = ({ title }) => {
   const wrapperRef = useRef(null);
