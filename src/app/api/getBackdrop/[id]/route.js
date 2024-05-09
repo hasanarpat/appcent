@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export const GET = async (req, { params }) => {
   const { id } = params;
 
-  const url = `http://image.tmdb.org/t/p/original/${id}`;
+  const url = `https://image.tmdb.org/t/p/original/${id}`;
 
   try {
     return new NextResponse(JSON.stringify({ path: url }));

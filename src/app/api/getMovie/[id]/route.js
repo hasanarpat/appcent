@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
-export const GET = async (req) => {
-  const url = `https://api.themoviedb.org/3/movie/1011985&api_key=${process.env.AUTH_API_KEY}`;
+export const GET = async (req, { params }) => {
+  const { id } = params;
+  const url = `https://api.themoviedb.org/3/movie/${id}&api_key=${process.env.AUTH_API_KEY}`;
   const options = {
     method: 'GET',
     headers: {

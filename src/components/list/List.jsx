@@ -23,6 +23,7 @@ const List = ({ title }) => {
     const getData = async () => {
       const res = await fetch('/api/popular');
       const data = await res.json();
+      console.log(data);
 
       setData(data);
     };
@@ -32,13 +33,13 @@ const List = ({ title }) => {
 
   const handleDirection = (direction) => {
     if (direction === 'left')
-      setSlideIndex((prev) => (prev <= 0 ? 6 : prev - 1));
+      setSlideIndex((prev) => (prev <= 0 ? 18 : prev - 1));
     else if (direction === 'right')
-      setSlideIndex((prev) => (prev >= 6 ? 0 : prev + 1));
+      setSlideIndex((prev) => (prev >= 18 ? 0 : prev + 1));
   };
 
   return (
-    <div className='p-2 relative overflow-y-hidden overflow-x-scroll snap-x snap-mandatory list'>
+    <div className='p-2 relative overflow-hidden snap-x snap-mandatory list'>
       <p className='mb-4 font-semibold'>{title} Movies</p>
       <span
         className='absolute top-1/2 left-0 z-20 text-black/50 bg-white/60 shadow-xl p-2 rounded-full cursor-pointer hover:scale-125 transition-all duration-75 ease-in'
