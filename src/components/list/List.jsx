@@ -21,10 +21,10 @@ const List = ({ title }) => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch('/api/popular');
+      let res;
+      if (title === 'Popular') res = await fetch('/api/popular');
+      else if (title === 'Trend') res = await fetch('/api/topRated');
       const data = await res.json();
-      console.log(data);
-
       setData(data);
     };
 
