@@ -31,7 +31,12 @@ const MovieDetails = async ({ params }) => {
         <div className='absolute z-10 w-full h-full'>
           <div className='w-full h-full p-4 px-8 flex flex-col lg:flex-row items-center lg:items-stretch lg:max-w-max lg:m-auto gap-4 lg:gap-24'>
             <div className='relative w-64 lg:aspect-[9/16] h-full'>
-              <Image alt='movie' src={img.path} fill className='object-cover' />
+              <Image
+                alt='movie'
+                src={img.path}
+                fill
+                className='object-cover rounded-md'
+              />
             </div>
             <div className='flex flex-col gap-2 max-w-2xl justify-center'>
               <h2 className='text-2xl xl:text-4xl font-semibold'>
